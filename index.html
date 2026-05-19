@@ -134,14 +134,12 @@
     }
     .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
     .hero-img {
-      width: 180px; height: 180px; border-radius: 50%;
+      width: 260px; height: 260px; border-radius: 50%;
       border: 4px solid var(--orange-light);
-      background: linear-gradient(135deg, var(--orange) 0%, #B85E3A 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 56px; font-weight: 700; color: white;
-      letter-spacing: -2px; flex-shrink: 0;
-      font-family: 'Inter', sans-serif;
+      object-fit: cover; object-position: center 50%;
+      flex-shrink: 0;
       box-shadow: 0 8px 32px rgba(217,119,87,0.25);
+      display: block;
     }
 
     /* ── ABOUT ── */
@@ -185,7 +183,7 @@
 
     /* ── NEWS SITES ── */
     #news-sites { background: var(--bg-alt); }
-    .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
     .news-card {
       background: var(--bg); border-radius: var(--radius);
       border: 1px solid var(--border); overflow: hidden;
@@ -202,6 +200,7 @@
     }
     .news-brand.brand-c { background: #f97316; }
     .news-brand.brand-a { background: #3b82f6; }
+    .news-brand.brand-b { background: #10b981; }
     .news-title { font-size: 20px; font-weight: 700; line-height: 1.4; color: var(--black); margin-bottom: 8px; }
     .news-domain { font-size: 13px; color: var(--gray); font-family: 'Inter', monospace; margin-bottom: 14px; }
     .news-desc { font-size: 14px; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; }
@@ -288,8 +287,10 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-img { display: none; }
+      .hero-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .hero-img { width: 180px; height: 180px; margin: 0 auto 8px; order: -1; }
+      .hero-stats { justify-content: center; }
+      .hero-cta { justify-content: center; }
       .hero-name { font-size: 36px; }
       .about-grid { grid-template-columns: 1fr; }
       .medilens-inner { grid-template-columns: 1fr; }
@@ -335,7 +336,7 @@
       <div class="hero-tag" data-i18n="hero.tag">医療系IT経営者・Claude Code Builder</div>
       <h1 class="hero-name" data-i18n="hero.name">鳥井 智文</h1>
       <p class="hero-name-en" data-i18n="hero.name.sub">Tomofumi Torii</p>
-      <p class="hero-desc" data-i18n="hero.desc">20年以上の医療IT経験を持つ経営者。Claude Codeのみで30日間でSaaSを構築し、医師向け医学論文配信サービス「MediLens Intelligence」を立ち上げました。</p>
+      <p class="hero-desc" data-i18n="hero.desc">20年以上の医療IT経験を持つ経営者。Claude Codeのみで30日間でSaaSを構築し、医師向け医学論文配信サービス「MediLens Intelligence」を立ち上げました。さらに Claude News JP / AI News JP / BUZZ Media News の 3 つの非公式ニュースサイトも運営。毎月新しいシステムやサイトをリリースし続けています。</p>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-num">30</div>
@@ -355,7 +356,7 @@
         <a href="#books" class="btn btn-outline" data-i18n="hero.cta.books">著書を見る</a>
       </div>
     </div>
-    <div class="hero-img">TT</div>
+    <img class="hero-img" src="assets/profile.png" alt="鳥井 智文 / Tomofumi Torii" width="260" height="260" loading="eager" />
   </div>
 </section>
 
@@ -369,6 +370,7 @@
       <div class="about-text">
         <p data-i18n="about.p1">医療系ITの現場で20年以上にわたりシステムエンジニアとして働き、医療情報システムの設計・開発・運用を担ってきました。その経験を活かし、医師が本当に必要としている情報を毎朝届けるSaaSを、AIとの協業だけで実現しました。</p>
         <p data-i18n="about.p2">Claude Codeとの対話を通じて、企画・設計・コーディング・テスト・デプロイまでを一人でこなし、30日でサービスをリリース。その開発記録を書籍としてまとめ、日英両語で出版しました。</p>
+        <p data-i18n="about.p3">現在は MediLens Intelligence に加え、Claude News JP / AI News JP / BUZZ Media News の 3 つの非公式ニュースサイトを並行運営。AI とサーバーレスを駆使し、毎月新しいシステムやサイトをリリースし続けています。</p>
         <div class="skills">
           <span class="skill-tag">Claude Code</span>
           <span class="skill-tag">AWS Lambda</span>
@@ -382,14 +384,24 @@
       <div>
         <ul class="timeline">
           <li>
+            <div class="timeline-year">2026–</div>
+            <div class="timeline-title" data-i18n="tl5.title">毎月新システム・サイトをリリース</div>
+            <div class="timeline-desc" data-i18n="tl5.desc">Claude Code × AWS で月次プロダクト開発を継続中</div>
+          </li>
+          <li>
             <div class="timeline-year">2026</div>
-            <div class="timeline-title" data-i18n="tl1.title">MediLens Intelligence リリース</div>
-            <div class="timeline-desc" data-i18n="tl1.desc">30日間、Claude Codeのみで構築</div>
+            <div class="timeline-title" data-i18n="tl4.title">ニュースサイト 3 サイト並行運営開始</div>
+            <div class="timeline-desc" data-i18n="tl4.desc">Claude News JP / AI News JP / BUZZ Media News を AI とサーバーレスで自動運用</div>
           </li>
           <li>
             <div class="timeline-year">2026</div>
             <div class="timeline-title" data-i18n="tl2.title">著書出版（日英）</div>
             <div class="timeline-desc" data-i18n="tl2.desc">開発の全記録をまとめKDPで出版</div>
+          </li>
+          <li>
+            <div class="timeline-year">2026</div>
+            <div class="timeline-title" data-i18n="tl1.title">MediLens Intelligence リリース</div>
+            <div class="timeline-desc" data-i18n="tl1.desc">30日間、Claude Codeのみで構築</div>
           </li>
           <li>
             <div class="timeline-year">2005–</div>
@@ -457,6 +469,20 @@
           <span class="news-source-tag">Anthropic</span>
           <span class="news-source-tag">OpenAI</span>
           <span class="news-source-tag">DeepSeek</span>
+        </div>
+        <span class="news-link" data-i18n="news.cta">サイトを見る →</span>
+      </a>
+      <a href="https://www.buzzmedia-news.com" target="_blank" class="news-card">
+        <div class="news-brand brand-b">B</div>
+        <h3 class="news-title" data-i18n="news.buzz.title">BUZZ Media News</h3>
+        <p class="news-domain">www.buzzmedia-news.com</p>
+        <p class="news-desc" data-i18n="news.buzz.desc">SNS (X / LINE / TikTok / YouTube)・SEO・MEO・Google Ads など Web マーケティング各プラットフォームの仕様変更・告知・アルゴリズム更新を毎日日本語で要約配信する非公式ニュースサイト。</p>
+        <div class="news-sources">
+          <span class="news-source-tag">Google Search</span>
+          <span class="news-source-tag">Google Ads</span>
+          <span class="news-source-tag">X Business</span>
+          <span class="news-source-tag">TikTok</span>
+          <span class="news-source-tag">SEJ</span>
         </div>
         <span class="news-link" data-i18n="news.cta">サイトを見る →</span>
       </a>
@@ -547,14 +573,17 @@ const T = {
     'nav.about': '経歴', 'nav.books': '書籍', 'nav.contact': 'お問い合わせ', 'nav.news': 'ニュース',
     'hero.tag': '医療系IT経営者・Claude Code Builder',
     'hero.name': '鳥井 智文', 'hero.name.sub': 'Tomofumi Torii',
-    'hero.desc': '20年以上の医療IT経験を持つ経営者。Claude Codeのみで30日間でSaaSを構築し、医師向け医学論文配信サービス「MediLens Intelligence」を立ち上げました。',
+    'hero.desc': '20年以上の医療IT経験を持つ経営者。Claude Codeのみで30日間でSaaSを構築し、医師向け医学論文配信サービス「MediLens Intelligence」を立ち上げました。さらに Claude News JP / AI News JP / BUZZ Media News の 3 つの非公式ニュースサイトも運営。毎月新しいシステムやサイトをリリースし続けています。',
     'stat1.label': '日で開発', 'stat2.label': '相当のSaaS', 'stat3.label': '専門領域対応',
     'hero.cta.service': 'サービスを見る', 'hero.cta.books': '著書を見る',
     'about.title': 'プロフィール・経歴',
     'about.p1': '医療系ITの現場で20年以上にわたりシステムエンジニアとして働き、医療情報システムの設計・開発・運用を担ってきました。その経験を活かし、医師が本当に必要としている情報を毎朝届けるSaaSを、AIとの協業だけで実現しました。',
     'about.p2': 'Claude Codeとの対話を通じて、企画・設計・コーディング・テスト・デプロイまでを一人でこなし、30日でサービスをリリース。その開発記録を書籍としてまとめ、日英両語で出版しました。',
+    'about.p3': '現在は MediLens Intelligence に加え、Claude News JP / AI News JP / BUZZ Media News の 3 つの非公式ニュースサイトを並行運営。AI とサーバーレスを駆使し、毎月新しいシステムやサイトをリリースし続けています。',
     'tl1.title': 'MediLens Intelligence リリース', 'tl1.desc': '30日間、Claude Codeのみで構築',
     'tl2.title': '著書出版（日英）', 'tl2.desc': '開発の全記録をまとめKDPで出版',
+    'tl4.title': 'ニュースサイト 3 サイト並行運営開始', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News を AI とサーバーレスで自動運用',
+    'tl5.title': '毎月新システム・サイトをリリース', 'tl5.desc': 'Claude Code × AWS で月次プロダクト開発を継続中',
     'tl3.title': '医療系ITシステムエンジニア', 'tl3.desc': '20年以上、医療情報システムの設計・開発に従事',
     'medilens.title': '医師向け医学論文配信サービス',
     'medilens.desc': 'PubMedから最新論文を自動取得・要約・翻訳し、専門領域に合わせて毎朝医師へ配信します。',
@@ -564,11 +593,13 @@ const T = {
     'medilens.f4': 'AWS Lambda + DynamoDB + SES で完全サーバーレス',
     'medilens.cta': 'サービスを見る →',
     'news.title': '運営ニュースサイト',
-    'news.desc': 'AI を活用して各社公式情報を毎日自動収集・要約・分類して配信する非公式ニュースサイトを 2 つ運営しています。要約は Claude Haiku 4.5、サーバーレス（AWS Lambda + DynamoDB + S3）で完全自動運用。',
+    'news.desc': 'AI を活用して各社公式情報を毎日自動収集・要約・分類して配信する非公式ニュースサイトを 3 つ運営しています。要約は Claude Haiku 4.5、サーバーレス（AWS Lambda + DynamoDB + S3）で完全自動運用。',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Anthropic / Claude / Claude Code の最新ニュース・リリース・更新情報を毎日日本語で要約配信する非公式ニュースサイト。',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Anthropic / OpenAI / DeepSeek 各社の最新ニュース・リリース情報を毎日日本語で要約配信する非公式 AI ニュースサイト。',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'SNS (X / LINE / TikTok / YouTube)・SEO・MEO・Google Ads など Web マーケティング各プラットフォームの仕様変更・告知・アルゴリズム更新を毎日日本語で要約配信する非公式ニュースサイト。',
     'news.cta': 'サイトを見る →',
     'books.title': '著書',
     'book.jp.badge': '日本語版',
@@ -588,14 +619,17 @@ const T = {
     'nav.about': 'About', 'nav.books': 'Books', 'nav.contact': 'Contact', 'nav.news': 'News',
     'hero.tag': 'Healthcare IT Founder · Claude Code Builder',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': 'Healthcare IT entrepreneur with 20+ years of domain expertise. Built a medical SaaS in 30 days using only Claude Code — now serving physicians across 128 specialties with AI-curated research.',
+    'hero.desc': 'Healthcare IT entrepreneur with 20+ years of domain expertise. Built a medical SaaS in 30 days using only Claude Code — now serving physicians across 128 specialties with AI-curated research. Also operates three unofficial news sites (Claude News JP / AI News JP / BUZZ Media News) and ships new systems and websites every month.',
     'stat1.label': 'days to build', 'stat2.label': 'SaaS value', 'stat3.label': 'specialties',
     'hero.cta.service': 'View Service', 'hero.cta.books': 'My Books',
     'about.title': 'Background',
     'about.p1': "With over 20 years as a systems engineer in healthcare IT, I've designed and operated medical information systems at scale. I channeled that domain expertise into building a physician-focused SaaS — entirely through collaboration with AI.",
     'about.p2': 'Through dialogue with Claude Code, I handled planning, design, coding, testing, and deployment solo — launching in 30 days. I documented the entire journey in a book, published in both Japanese and English.',
+    'about.p3': 'In addition to MediLens Intelligence, I currently operate three unofficial news sites — Claude News JP / AI News JP / BUZZ Media News — in parallel. Leveraging AI and serverless, I ship new systems and websites every single month.',
     'tl1.title': 'Launched MediLens Intelligence', 'tl1.desc': 'Built in 30 days using only Claude Code',
     'tl2.title': 'Published Books (JP + EN)', 'tl2.desc': 'Documented the full journey, self-published on KDP',
+    'tl4.title': 'Launched 3 parallel news sites', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News — AI + serverless auto-pipelines',
+    'tl5.title': 'Shipping a new system every month', 'tl5.desc': 'Ongoing monthly product releases with Claude Code × AWS',
     'tl3.title': 'Healthcare IT Systems Engineer', 'tl3.desc': '20+ years in medical information system design & development',
     'medilens.title': 'AI-Powered Medical Literature Service',
     'medilens.desc': 'Automatically fetches, summarizes, and translates the latest PubMed papers, delivering specialty-tailored updates to physicians every morning.',
@@ -605,11 +639,13 @@ const T = {
     'medilens.f4': 'Fully serverless on AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Visit Service →',
     'news.title': 'News Sites',
-    'news.desc': 'I operate two unofficial news sites that automatically collect, summarize, and classify daily updates from major AI companies. Summaries powered by Claude Haiku 4.5 on a fully serverless AWS stack (Lambda + DynamoDB + S3).',
+    'news.desc': 'I operate three unofficial news sites that automatically collect, summarize, and classify daily updates from major platforms. Summaries powered by Claude Haiku 4.5 on a fully serverless AWS stack (Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Unofficial Japanese news site delivering daily summaries of Anthropic / Claude / Claude Code releases and updates.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Unofficial Japanese AI news site delivering daily summaries of Anthropic / OpenAI / DeepSeek release information.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Unofficial Japanese news site covering daily spec changes, announcements, and algorithm updates from web marketing platforms — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Visit site →',
     'books.title': 'Publications',
     'book.jp.badge': 'Japanese Edition',
@@ -629,14 +665,17 @@ const T = {
     'nav.about': '經歷', 'nav.books': '著作', 'nav.contact': '聯絡我', 'nav.news': '新聞',
     'hero.tag': '醫療IT經營者・Claude Code 建構者',
     'hero.name': '鳥井 智文', 'hero.name.sub': 'Tomofumi Torii',
-    'hero.desc': '擁有超過20年醫療IT經驗的經營者。僅使用Claude Code，在30天內打造SaaS，創立了面向醫師的醫學論文配信服務「MediLens Intelligence」。',
+    'hero.desc': '擁有超過20年醫療IT經驗的經營者。僅使用Claude Code，在30天內打造SaaS，創立了面向醫師的醫學論文配信服務「MediLens Intelligence」。並同時營運 Claude News JP / AI News JP / BUZZ Media News 3 個非公式新聞網站，每月持續發布新系統與網站。',
     'stat1.label': '天完成開發', 'stat2.label': 'SaaS 估值', 'stat3.label': '對應專科',
     'hero.cta.service': '查看服務', 'hero.cta.books': '我的著作',
     'about.title': '個人簡介・經歷',
     'about.p1': '在醫療IT現場擔任系統工程師超過20年，負責醫療資訊系統的設計、開發與營運。憑藉這些經驗，僅透過與AI的協作，實現了每天早晨為醫師提供所需資訊的SaaS服務。',
     'about.p2': '透過與Claude Code的對話，一人完成了企劃、設計、程式開發、測試到部署的全程，於30天內正式上線。並將整個開發記錄整理成書，以日英雙語出版。',
+    'about.p3': '目前在 MediLens Intelligence 之外，同時並行營運 Claude News JP / AI News JP / BUZZ Media News 三個非公式新聞網站。運用 AI 與無伺服器架構，每月持續發布新系統與網站。',
     'tl1.title': 'MediLens Intelligence 上線', 'tl1.desc': '僅用30天透過Claude Code構築完成',
     'tl2.title': '著作出版（日英）', 'tl2.desc': '整理全部開發記錄，在KDP自費出版',
+    'tl4.title': '3 個新聞網站並行營運開始', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News 以 AI + 無伺服器架構自動運營',
+    'tl5.title': '每月持續發布新系統與網站', 'tl5.desc': '以 Claude Code × AWS 持續進行月度產品開發',
     'tl3.title': '醫療IT系統工程師', 'tl3.desc': '超過20年從事醫療資訊系統的設計與開發',
     'medilens.title': '面向醫師的醫學論文推送服務',
     'medilens.desc': '自動從PubMed取得最新論文、進行摘要及翻譯，每天早晨依專科領域推送給醫師。',
@@ -646,11 +685,13 @@ const T = {
     'medilens.f4': '完全無伺服器架構：AWS Lambda + DynamoDB + SES',
     'medilens.cta': '查看服務 →',
     'news.title': '營運的新聞網站',
-    'news.desc': 'AI を活用して各社公式情報を毎日自動收集・要約・分類して配信する非公式新聞網站を 2 つ營運中。要約は Claude Haiku 4.5、AWS Lambda + DynamoDB + S3 で完全自動運用。',
+    'news.desc': '運用 AI 每日自動收集・摘要・分類各平台官方資訊配信的非公式新聞網站共 3 個。摘要由 Claude Haiku 4.5 生成，AWS Lambda + DynamoDB + S3 全自動營運。',
     'news.claude.title': 'Claude News JP',
-    'news.claude.desc': 'Anthropic / Claude / Claude Code 最新新聞・發布・更新を毎日日本語で要約配信する非公式新聞網站。',
+    'news.claude.desc': '每日以日語摘要配信 Anthropic / Claude / Claude Code 最新新聞・發布・更新資訊的非公式新聞網站。',
     'news.ainews.title': 'AI News JP',
-    'news.ainews.desc': 'Anthropic / OpenAI / DeepSeek 各社の最新新聞・發布資訊を毎日日本語で要約配信する非公式 AI 新聞網站。',
+    'news.ainews.desc': '每日以日語摘要配信 Anthropic / OpenAI / DeepSeek 各公司最新新聞・發布資訊的非公式 AI 新聞網站。',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': '每日以日語摘要配信 SNS (X / LINE / TikTok / YouTube)・SEO・MEO・Google Ads 等 Web 行銷各平台規格變更、公告、演算法更新的非公式新聞網站。',
     'news.cta': '查看網站 →',
     'books.title': '著作',
     'book.jp.badge': '日文版',
@@ -670,14 +711,17 @@ const T = {
     'nav.about': '经历', 'nav.books': '著作', 'nav.contact': '联系我', 'nav.news': '新闻',
     'hero.tag': '医疗IT创业者・Claude Code 构建者',
     'hero.name': '鳥井 智文', 'hero.name.sub': 'Tomofumi Torii',
-    'hero.desc': '拥有超过20年医疗IT经验的创业者。仅使用Claude Code，在30天内构建SaaS，创立了面向医生的医学论文配信服务「MediLens Intelligence」。',
+    'hero.desc': '拥有超过20年医疗IT经验的创业者。仅使用Claude Code，在30天内构建SaaS，创立了面向医生的医学论文配信服务「MediLens Intelligence」。同时运营 Claude News JP / AI News JP / BUZZ Media News 3 个非公式新闻网站，每月持续发布新系统与网站。',
     'stat1.label': '天完成开发', 'stat2.label': 'SaaS 估值', 'stat3.label': '对应专科',
     'hero.cta.service': '查看服务', 'hero.cta.books': '我的著作',
     'about.title': '个人简介・经历',
     'about.p1': '在医疗IT领域担任系统工程师超过20年，负责医疗信息系统的设计、开发与运营。凭借这些经验，仅通过与AI的协作，实现了每天早晨为医生提供所需信息的SaaS服务。',
     'about.p2': '通过与Claude Code的对话，独自完成了企划、设计、编程、测试到部署的全程，在30天内正式上线。并将整个开发记录整理成书，以日英双语出版。',
+    'about.p3': '目前除 MediLens Intelligence 外，还同时并行运营 Claude News JP / AI News JP / BUZZ Media News 三个非公式新闻网站。借助 AI 与无服务器架构，每月持续发布新系统与网站。',
     'tl1.title': 'MediLens Intelligence 上线', 'tl1.desc': '仅用30天通过Claude Code构建完成',
     'tl2.title': '著作出版（日英）', 'tl2.desc': '整理全部开发记录，在KDP自费出版',
+    'tl4.title': '3 个新闻网站并行运营开始', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News 以 AI + 无服务器架构自动运营',
+    'tl5.title': '每月持续发布新系统与网站', 'tl5.desc': '以 Claude Code × AWS 持续进行月度产品开发',
     'tl3.title': '医疗IT系统工程师', 'tl3.desc': '超过20年从事医疗信息系统的设计与开发',
     'medilens.title': '面向医生的医学论文配信服务',
     'medilens.desc': '自动从PubMed获取最新论文、进行摘要及翻译，每天早晨依专科领域发送给医生。',
@@ -687,11 +731,13 @@ const T = {
     'medilens.f4': '完全无服务器架构：AWS Lambda + DynamoDB + SES',
     'medilens.cta': '查看服务 →',
     'news.title': '运营的新闻网站',
-    'news.desc': '利用 AI 自动收集・摘要・分类各公司公开信息，每日推送的非公式新闻网站 2 个。摘要由 Claude Haiku 4.5 完成，运行在 AWS Lambda + DynamoDB + S3 的无服务器架构上。',
+    'news.desc': '利用 AI 自动收集・摘要・分类各平台官方信息，每日推送的非公式新闻网站 3 个。摘要由 Claude Haiku 4.5 完成，运行在 AWS Lambda + DynamoDB + S3 的无服务器架构上。',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': '每日以日语推送 Anthropic / Claude / Claude Code 最新新闻・发布・更新的非公式新闻网站。',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': '每日以日语推送 Anthropic / OpenAI / DeepSeek 各公司最新新闻・发布信息的非公式 AI 新闻网站。',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': '每日以日语推送 SNS (X / LINE / TikTok / YouTube)・SEO・MEO・Google Ads 等 Web 营销各平台规格变更、公告、算法更新的非公式新闻网站。',
     'news.cta': '查看网站 →',
     'books.title': '著作',
     'book.jp.badge': '日文版',
@@ -711,14 +757,17 @@ const T = {
     'nav.about': 'Trayectoria', 'nav.books': 'Libros', 'nav.contact': 'Contacto', 'nav.news': 'Noticias',
     'hero.tag': 'Fundador IT Médico · Desarrollador Claude Code',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': 'Emprendedor de IT médico con más de 20 años de experiencia. Construí un SaaS médico en 30 días usando solo Claude Code, sirviendo a médicos en 128 especialidades.',
+    'hero.desc': 'Emprendedor de IT médico con más de 20 años de experiencia. Construí un SaaS médico en 30 días usando solo Claude Code, sirviendo a médicos en 128 especialidades. También opero tres sitios de noticias no oficiales (Claude News JP / AI News JP / BUZZ Media News) y lanzo nuevos sistemas y sitios cada mes.',
     'stat1.label': 'días de desarrollo', 'stat2.label': 'valor del SaaS', 'stat3.label': 'especialidades',
     'hero.cta.service': 'Ver Servicio', 'hero.cta.books': 'Mis Libros',
     'about.title': 'Perfil y Trayectoria',
     'about.p1': 'Con más de 20 años como ingeniero de sistemas en IT médico, he diseñado y operado sistemas de información médica a gran escala. Apliqué esa experiencia para construir un SaaS enfocado en médicos, completamente en colaboración con IA.',
     'about.p2': 'A través del diálogo con Claude Code, realicé la planificación, diseño, codificación, pruebas y despliegue de forma individual, lanzando en 30 días. Documenté todo el proceso en un libro publicado en japonés e inglés.',
+    'about.p3': 'Actualmente, además de MediLens Intelligence, opero en paralelo tres sitios de noticias no oficiales: Claude News JP / AI News JP / BUZZ Media News. Aprovechando IA y arquitectura serverless, lanzo nuevos sistemas y sitios cada mes.',
     'tl1.title': 'Lanzamiento de MediLens Intelligence', 'tl1.desc': 'Construido en 30 días usando solo Claude Code',
     'tl2.title': 'Publicación de Libros (JP + EN)', 'tl2.desc': 'Documenté todo el proceso, autopublicado en KDP',
+    'tl4.title': 'Lancé 3 sitios de noticias en paralelo', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News — pipelines automatizados con IA + serverless',
+    'tl5.title': 'Lanzo un nuevo sistema cada mes', 'tl5.desc': 'Producto mensual continuo con Claude Code × AWS',
     'tl3.title': 'Ingeniero de Sistemas IT Médico', 'tl3.desc': 'Más de 20 años en diseño y desarrollo de sistemas de información médica',
     'medilens.title': 'Servicio de Literatura Médica con IA',
     'medilens.desc': 'Recupera, resume y traduce automáticamente los últimos artículos de PubMed, enviando actualizaciones especializadas a médicos cada mañana.',
@@ -728,11 +777,13 @@ const T = {
     'medilens.f4': 'Completamente serverless en AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Ver Servicio →',
     'news.title': 'Sitios de Noticias',
-    'news.desc': 'Opero dos sitios de noticias no oficiales que recopilan, resumen y clasifican automáticamente actualizaciones diarias de las principales empresas de IA. Resúmenes con Claude Haiku 4.5 en arquitectura serverless (AWS Lambda + DynamoDB + S3).',
+    'news.desc': 'Opero tres sitios de noticias no oficiales que recopilan, resumen y clasifican automáticamente actualizaciones diarias de las principales plataformas. Resúmenes con Claude Haiku 4.5 en arquitectura serverless (AWS Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Sitio no oficial en japonés con resúmenes diarios de noticias y lanzamientos de Anthropic / Claude / Claude Code.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Sitio no oficial de noticias de IA en japonés con resúmenes diarios de Anthropic / OpenAI / DeepSeek.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Sitio no oficial en japonés con resúmenes diarios de cambios, anuncios y actualizaciones de algoritmos de plataformas de marketing web — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Visitar sitio →',
     'books.title': 'Publicaciones',
     'book.jp.badge': 'Edición Japonesa',
@@ -752,14 +803,17 @@ const T = {
     'nav.about': 'Werdegang', 'nav.books': 'Bücher', 'nav.contact': 'Kontakt', 'nav.news': 'Nachrichten',
     'hero.tag': 'Healthcare-IT-Gründer · Claude Code Builder',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': 'Healthcare-IT-Unternehmer mit über 20 Jahren Erfahrung. Ich baute ein medizinisches SaaS in 30 Tagen mit nur Claude Code — jetzt für Ärzte in 128 Fachgebieten.',
+    'hero.desc': 'Healthcare-IT-Unternehmer mit über 20 Jahren Erfahrung. Ich baute ein medizinisches SaaS in 30 Tagen mit nur Claude Code — jetzt für Ärzte in 128 Fachgebieten. Betreibe außerdem drei inoffizielle Nachrichten-Sites (Claude News JP / AI News JP / BUZZ Media News) und veröffentliche jeden Monat neue Systeme und Websites.',
     'stat1.label': 'Tage Entwicklung', 'stat2.label': 'SaaS-Wert', 'stat3.label': 'Fachgebiete',
     'hero.cta.service': 'Zum Service', 'hero.cta.books': 'Meine Bücher',
     'about.title': 'Profil & Werdegang',
     'about.p1': 'Mit über 20 Jahren als Systemingenieur im Gesundheits-IT-Bereich habe ich medizinische Informationssysteme im großen Maßstab gestaltet und betrieben. Dieses Fachwissen nutzte ich, um ein auf Ärzte ausgerichtetes SaaS vollständig in Zusammenarbeit mit KI zu entwickeln.',
     'about.p2': 'Durch den Dialog mit Claude Code übernahm ich Planung, Design, Coding, Testing und Deployment allein – Launch in 30 Tagen. Den gesamten Prozess dokumentierte ich in einem Buch, das auf Japanisch und Englisch erschienen ist.',
+    'about.p3': 'Neben MediLens Intelligence betreibe ich derzeit drei inoffizielle Nachrichten-Sites parallel: Claude News JP / AI News JP / BUZZ Media News. Mit KI und Serverless-Architektur veröffentliche ich jeden Monat neue Systeme und Websites.',
     'tl1.title': 'MediLens Intelligence gelauncht', 'tl1.desc': 'In 30 Tagen mit nur Claude Code entwickelt',
     'tl2.title': 'Bücher veröffentlicht (JP + EN)', 'tl2.desc': 'Gesamten Prozess dokumentiert, auf KDP selbst veröffentlicht',
+    'tl4.title': '3 Nachrichten-Sites parallel gestartet', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News – KI + Serverless-Pipelines',
+    'tl5.title': 'Monatlich neue Systeme & Sites', 'tl5.desc': 'Laufende monatliche Produkt-Releases mit Claude Code × AWS',
     'tl3.title': 'Healthcare-IT-Systemingenieur', 'tl3.desc': 'Über 20 Jahre in der Entwicklung medizinischer Informationssysteme',
     'medilens.title': 'KI-gestützter Medizinliteraturdienst',
     'medilens.desc': 'Ruft automatisch die neuesten PubMed-Artikel ab, fasst sie zusammen und übersetzt sie, und liefert täglich morgens fachspezifische Updates an Ärzte.',
@@ -769,11 +823,13 @@ const T = {
     'medilens.f4': 'Vollständig serverlos mit AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Zum Service →',
     'news.title': 'Nachrichten-Sites',
-    'news.desc': 'Ich betreibe zwei inoffizielle Nachrichten-Sites, die täglich Updates der wichtigsten KI-Unternehmen automatisch sammeln, zusammenfassen und klassifizieren. Zusammenfassungen mit Claude Haiku 4.5 auf einer Serverless-Architektur (AWS Lambda + DynamoDB + S3).',
+    'news.desc': 'Ich betreibe drei inoffizielle Nachrichten-Sites, die täglich Updates der wichtigsten Plattformen automatisch sammeln, zusammenfassen und klassifizieren. Zusammenfassungen mit Claude Haiku 4.5 auf einer Serverless-Architektur (AWS Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Inoffizielle japanische Nachrichten-Site mit täglichen Zusammenfassungen von Anthropic / Claude / Claude Code Veröffentlichungen.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Inoffizielle japanische KI-Nachrichten-Site mit täglichen Zusammenfassungen von Anthropic / OpenAI / DeepSeek.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Inoffizielle japanische Nachrichten-Site mit täglichen Updates zu Spezifikationsänderungen, Ankündigungen und Algorithmus-Updates von Web-Marketing-Plattformen — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Site besuchen →',
     'books.title': 'Bücher',
     'book.jp.badge': 'Japanische Ausgabe',
@@ -793,14 +849,17 @@ const T = {
     'nav.about': 'Parcours', 'nav.books': 'Livres', 'nav.contact': 'Contact', 'nav.news': 'Actualités',
     'hero.tag': 'Fondateur IT Santé · Développeur Claude Code',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': "Entrepreneur en IT de santé avec plus de 20 ans d'expertise. J'ai construit un SaaS médical en 30 jours avec uniquement Claude Code, au service de médecins dans 128 spécialités.",
+    'hero.desc': "Entrepreneur en IT de santé avec plus de 20 ans d'expertise. J'ai construit un SaaS médical en 30 jours avec uniquement Claude Code, au service de médecins dans 128 spécialités. J'opère également trois sites d'actualités non officiels (Claude News JP / AI News JP / BUZZ Media News) et publie de nouveaux systèmes et sites chaque mois.",
     'stat1.label': 'jours de dev', 'stat2.label': 'valeur SaaS', 'stat3.label': 'spécialités',
     'hero.cta.service': 'Voir le service', 'hero.cta.books': 'Mes Livres',
     'about.title': 'Profil & Parcours',
     'about.p1': "Avec plus de 20 ans en tant qu'ingénieur systèmes dans l'IT de santé, j'ai conçu et exploité des systèmes d'information médicale à grande échelle. J'ai mis cette expertise au service de la création d'un SaaS destiné aux médecins, entièrement en collaboration avec l'IA.",
     'about.p2': "En dialoguant avec Claude Code, j'ai assuré seul la planification, la conception, le développement, les tests et le déploiement – lancement en 30 jours. J'ai documenté tout le parcours dans un livre publié en japonais et en anglais.",
+    'about.p3': "En plus de MediLens Intelligence, j'opère actuellement en parallèle trois sites d'actualités non officiels : Claude News JP / AI News JP / BUZZ Media News. Grâce à l'IA et au serverless, je publie chaque mois de nouveaux systèmes et sites.",
     'tl1.title': 'Lancement de MediLens Intelligence', 'tl1.desc': 'Construit en 30 jours avec uniquement Claude Code',
     'tl2.title': 'Publications de livres (JP + EN)', 'tl2.desc': 'Tout le parcours documenté, auto-publié sur KDP',
+    'tl4.title': "Lancement de 3 sites d'actualités", 'tl4.desc': "Claude News JP / AI News JP / BUZZ Media News — pipelines IA + serverless",
+    'tl5.title': "Nouveau système chaque mois", 'tl5.desc': "Lancements mensuels continus avec Claude Code × AWS",
     'tl3.title': "Ingénieur systèmes IT de santé", 'tl3.desc': "Plus de 20 ans en conception et développement de systèmes d'information médicale",
     'medilens.title': 'Service de Littérature Médicale par IA',
     'medilens.desc': "Récupère, résume et traduit automatiquement les derniers articles PubMed, en livrant des mises à jour spécialisées aux médecins chaque matin.",
@@ -810,11 +869,13 @@ const T = {
     'medilens.f4': 'Entièrement serverless sur AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Voir le service →',
     'news.title': 'Sites d\'actualités',
-    'news.desc': 'J\'opère deux sites d\'actualités non officiels qui collectent, résument et classifient automatiquement les mises à jour quotidiennes des principales entreprises d\'IA. Résumés avec Claude Haiku 4.5 sur une architecture serverless (AWS Lambda + DynamoDB + S3).',
+    'news.desc': 'J\'opère trois sites d\'actualités non officiels qui collectent, résument et classifient automatiquement les mises à jour quotidiennes des principales plateformes. Résumés avec Claude Haiku 4.5 sur une architecture serverless (AWS Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Site d\'actualités non officiel en japonais avec résumés quotidiens des sorties Anthropic / Claude / Claude Code.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Site d\'actualités IA non officiel en japonais avec résumés quotidiens de Anthropic / OpenAI / DeepSeek.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Site d\'actualités non officiel en japonais avec résumés quotidiens des changements de spécifications, annonces et mises à jour algorithmiques des plateformes de marketing web — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Visiter le site →',
     'books.title': 'Publications',
     'book.jp.badge': 'Édition japonaise',
@@ -834,14 +895,17 @@ const T = {
     'nav.about': 'Percorso', 'nav.books': 'Libri', 'nav.contact': 'Contatto', 'nav.news': 'Notizie',
     'hero.tag': 'Fondatore IT Sanitario · Claude Code Builder',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': 'Imprenditore IT sanitario con oltre 20 anni di esperienza. Ho costruito un SaaS medico in 30 giorni usando solo Claude Code, servendo medici in 128 specialità.',
+    'hero.desc': 'Imprenditore IT sanitario con oltre 20 anni di esperienza. Ho costruito un SaaS medico in 30 giorni usando solo Claude Code, servendo medici in 128 specialità. Gestisco anche tre siti di notizie non ufficiali (Claude News JP / AI News JP / BUZZ Media News) e rilascio nuovi sistemi e siti ogni mese.',
     'stat1.label': 'giorni di sviluppo', 'stat2.label': 'valore SaaS', 'stat3.label': 'specialità',
     'hero.cta.service': 'Vedi il servizio', 'hero.cta.books': 'I miei Libri',
     'about.title': 'Profilo & Carriera',
     'about.p1': "Con oltre 20 anni come ingegnere di sistemi nell'IT sanitaria, ho progettato e gestito sistemi informativi medici su larga scala. Ho utilizzato quella competenza per costruire un SaaS focalizzato sui medici, interamente in collaborazione con l'IA.",
     'about.p2': "Attraverso il dialogo con Claude Code, ho gestito da solo pianificazione, design, codifica, test e deployment – lancio in 30 giorni. Ho documentato l'intero percorso in un libro pubblicato in giapponese e inglese.",
+    'about.p3': "Oltre a MediLens Intelligence, attualmente gestisco in parallelo tre siti di notizie non ufficiali: Claude News JP / AI News JP / BUZZ Media News. Sfruttando IA e serverless, rilascio nuovi sistemi e siti ogni mese.",
     'tl1.title': 'Lancio di MediLens Intelligence', 'tl1.desc': 'Costruito in 30 giorni usando solo Claude Code',
     'tl2.title': 'Pubblicazione libri (JP + EN)', 'tl2.desc': 'Intero percorso documentato, autopubblicato su KDP',
+    'tl4.title': '3 siti di notizie in parallelo', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News — pipeline IA + serverless',
+    'tl5.title': 'Nuovo sistema ogni mese', 'tl5.desc': 'Release mensili continue con Claude Code × AWS',
     'tl3.title': 'Ingegnere di sistemi IT sanitari', 'tl3.desc': 'Oltre 20 anni nella progettazione e sviluppo di sistemi informativi medici',
     'medilens.title': 'Servizio di Letteratura Medica con IA',
     'medilens.desc': "Recupera, riassume e traduce automaticamente gli ultimi articoli PubMed, consegnando aggiornamenti specializzati ai medici ogni mattina.",
@@ -851,11 +915,13 @@ const T = {
     'medilens.f4': 'Completamente serverless su AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Vedi il servizio →',
     'news.title': 'Siti di notizie',
-    'news.desc': 'Gestisco due siti di notizie non ufficiali che raccolgono, riassumono e classificano automaticamente gli aggiornamenti quotidiani delle principali aziende di IA. Riassunti con Claude Haiku 4.5 su architettura serverless (AWS Lambda + DynamoDB + S3).',
+    'news.desc': 'Gestisco tre siti di notizie non ufficiali che raccolgono, riassumono e classificano automaticamente gli aggiornamenti quotidiani delle principali piattaforme. Riassunti con Claude Haiku 4.5 su architettura serverless (AWS Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Sito di notizie non ufficiale in giapponese con riepiloghi quotidiani dei rilasci Anthropic / Claude / Claude Code.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Sito di notizie AI non ufficiale in giapponese con riepiloghi quotidiani di Anthropic / OpenAI / DeepSeek.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Sito di notizie non ufficiale in giapponese con riepiloghi quotidiani su modifiche di specifiche, annunci e aggiornamenti algoritmici delle piattaforme di marketing web — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Visita il sito →',
     'books.title': 'Pubblicazioni',
     'book.jp.badge': 'Edizione Giapponese',
@@ -875,14 +941,17 @@ const T = {
     'nav.about': '경력', 'nav.books': '도서', 'nav.contact': '문의', 'nav.news': '뉴스',
     'hero.tag': '의료 IT 창업자・Claude Code 빌더',
     'hero.name': '鳥井 智文', 'hero.name.sub': 'Tomofumi Torii',
-    'hero.desc': '20년 이상의 의료 IT 경험을 보유한 경영자. Claude Code만으로 30일 만에 SaaS를 구축하여 128개 전문과 의사를 위한 의학 논문 발송 서비스 「MediLens Intelligence」를 론칭했습니다.',
+    'hero.desc': '20년 이상의 의료 IT 경험을 보유한 경영자. Claude Code만으로 30일 만에 SaaS를 구축하여 128개 전문과 의사를 위한 의학 논문 발송 서비스 「MediLens Intelligence」를 론칭했습니다. Claude News JP / AI News JP / BUZZ Media News 3 개의 비공식 뉴스 사이트도 운영하며, 매월 새로운 시스템과 사이트를 출시하고 있습니다.',
     'stat1.label': '일 개발', 'stat2.label': 'SaaS 가치', 'stat3.label': '전문 분야',
     'hero.cta.service': '서비스 보기', 'hero.cta.books': '내 책',
     'about.title': '프로필・경력',
     'about.p1': '의료 IT 현장에서 시스템 엔지니어로 20년 이상 근무하며 의료 정보 시스템의 설계·개발·운영을 담당했습니다. 그 경험을 살려, AI와의 협업만으로 의사가 매일 아침 필요한 정보를 받을 수 있는 SaaS를 실현했습니다.',
     'about.p2': 'Claude Code와의 대화를 통해 기획·설계·코딩·테스트·배포까지 혼자 처리하며 30일 만에 서비스를 출시했습니다. 그 개발 기록을 책으로 정리하여 일본어와 영어로 출판했습니다.',
+    'about.p3': '현재 MediLens Intelligence 외에도 Claude News JP / AI News JP / BUZZ Media News 3 개의 비공식 뉴스 사이트를 병행 운영하고 있습니다. AI 와 서버리스를 활용해 매월 새로운 시스템과 사이트를 출시하고 있습니다.',
     'tl1.title': 'MediLens Intelligence 출시', 'tl1.desc': '30일간 Claude Code만으로 구축',
     'tl2.title': '저서 출판 (일영)', 'tl2.desc': '전체 개발 기록을 정리하여 KDP에서 자비 출판',
+    'tl4.title': '뉴스 사이트 3 개 병행 운영 시작', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News — AI + 서버리스 자동 파이프라인',
+    'tl5.title': '매월 새 시스템·사이트 출시', 'tl5.desc': 'Claude Code × AWS 로 월간 프로덕트 개발을 지속 중',
     'tl3.title': '의료 IT 시스템 엔지니어', 'tl3.desc': '20년 이상 의료 정보 시스템 설계·개발 종사',
     'medilens.title': '의사를 위한 의학 논문 발송 서비스',
     'medilens.desc': 'PubMed에서 최신 논문을 자동 취득·요약·번역하여 전문 영역에 맞게 매일 아침 의사에게 발송합니다.',
@@ -892,11 +961,13 @@ const T = {
     'medilens.f4': 'AWS Lambda + DynamoDB + SES로 완전 서버리스',
     'medilens.cta': '서비스 보기 →',
     'news.title': '운영 뉴스 사이트',
-    'news.desc': '주요 AI 기업들의 일일 업데이트를 자동 수집・요약・분류해 배포하는 비공식 뉴스 사이트 2 개를 운영하고 있습니다. 요약은 Claude Haiku 4.5, AWS Lambda + DynamoDB + S3 의 서버리스 아키텍처에서 완전 자동 운영됩니다.',
+    'news.desc': '주요 플랫폼의 일일 업데이트를 자동 수집・요약・분류해 배포하는 비공식 뉴스 사이트 3 개를 운영하고 있습니다. 요약은 Claude Haiku 4.5, AWS Lambda + DynamoDB + S3 의 서버리스 아키텍처에서 완전 자동 운영됩니다.',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Anthropic / Claude / Claude Code 최신 뉴스・릴리스・업데이트를 매일 일본어로 요약 배포하는 비공식 뉴스 사이트.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Anthropic / OpenAI / DeepSeek 각사의 최신 뉴스・릴리스 정보를 매일 일본어로 요약 배포하는 비공식 AI 뉴스 사이트.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'SNS (X / LINE / TikTok / YouTube)・SEO・MEO・Google Ads 등 웹 마케팅 각 플랫폼의 사양 변경・공지・알고리즘 업데이트를 매일 일본어로 요약 배포하는 비공식 뉴스 사이트.',
     'news.cta': '사이트 보기 →',
     'books.title': '저서',
     'book.jp.badge': '일본어판',
@@ -916,14 +987,17 @@ const T = {
     'nav.about': 'Trajetória', 'nav.books': 'Livros', 'nav.contact': 'Contato', 'nav.news': 'Notícias',
     'hero.tag': 'Fundador de TI em Saúde · Desenvolvedor Claude Code',
     'hero.name': 'Tomofumi<br>Torii', 'hero.name.sub': '鳥井 智文',
-    'hero.desc': 'Empreendedor de TI em saúde com mais de 20 anos de experiência. Construí um SaaS médico em 30 dias usando apenas o Claude Code, atendendo médicos em 128 especialidades.',
+    'hero.desc': 'Empreendedor de TI em saúde com mais de 20 anos de experiência. Construí um SaaS médico em 30 dias usando apenas o Claude Code, atendendo médicos em 128 especialidades. Também opero três sites de notícias não oficiais (Claude News JP / AI News JP / BUZZ Media News) e lanço novos sistemas e sites todos os meses.',
     'stat1.label': 'dias de desenvolvimento', 'stat2.label': 'valor do SaaS', 'stat3.label': 'especialidades',
     'hero.cta.service': 'Ver Serviço', 'hero.cta.books': 'Meus Livros',
     'about.title': 'Perfil e Trajetória',
     'about.p1': 'Com mais de 20 anos como engenheiro de sistemas em TI de saúde, projetei e operei sistemas de informação médica em larga escala. Apliquei essa expertise para construir um SaaS focado em médicos, inteiramente em colaboração com IA.',
     'about.p2': 'Através do diálogo com o Claude Code, realizei planejamento, design, codificação, testes e implantação sozinho — lançando em 30 dias. Documentei toda a jornada em um livro publicado em japonês e inglês.',
+    'about.p3': 'Atualmente, além do MediLens Intelligence, opero em paralelo três sites de notícias não oficiais: Claude News JP / AI News JP / BUZZ Media News. Com IA e arquitetura serverless, lanço novos sistemas e sites todos os meses.',
     'tl1.title': 'Lançamento do MediLens Intelligence', 'tl1.desc': 'Construído em 30 dias usando apenas Claude Code',
     'tl2.title': 'Publicação de Livros (JP + EN)', 'tl2.desc': 'Documentei toda a jornada, autopublicado no KDP',
+    'tl4.title': 'Lancei 3 sites de notícias em paralelo', 'tl4.desc': 'Claude News JP / AI News JP / BUZZ Media News — pipelines IA + serverless',
+    'tl5.title': 'Lanço um novo sistema todo mês', 'tl5.desc': 'Releases mensais contínuos com Claude Code × AWS',
     'tl3.title': 'Engenheiro de Sistemas de TI em Saúde', 'tl3.desc': 'Mais de 20 anos em design e desenvolvimento de sistemas de informação médica',
     'medilens.title': 'Serviço de Literatura Médica com IA',
     'medilens.desc': 'Busca, resume e traduz automaticamente os últimos artigos do PubMed, entregando atualizações especializadas aos médicos todas as manhãs.',
@@ -933,11 +1007,13 @@ const T = {
     'medilens.f4': 'Totalmente serverless no AWS Lambda + DynamoDB + SES',
     'medilens.cta': 'Ver Serviço →',
     'news.title': 'Sites de Notícias',
-    'news.desc': 'Opero dois sites de notícias não oficiais que coletam, resumem e classificam automaticamente atualizações diárias das principais empresas de IA. Resumos com Claude Haiku 4.5 em arquitetura serverless (AWS Lambda + DynamoDB + S3).',
+    'news.desc': 'Opero três sites de notícias não oficiais que coletam, resumem e classificam automaticamente atualizações diárias das principais plataformas. Resumos com Claude Haiku 4.5 em arquitetura serverless (AWS Lambda + DynamoDB + S3).',
     'news.claude.title': 'Claude News JP',
     'news.claude.desc': 'Site de notícias não oficial em japonês com resumos diários dos lançamentos Anthropic / Claude / Claude Code.',
     'news.ainews.title': 'AI News JP',
     'news.ainews.desc': 'Site de notícias de IA não oficial em japonês com resumos diários de Anthropic / OpenAI / DeepSeek.',
+    'news.buzz.title': 'BUZZ Media News',
+    'news.buzz.desc': 'Site de notícias não oficial em japonês com resumos diários de mudanças de especificações, anúncios e atualizações de algoritmos das plataformas de marketing web — SNS (X / LINE / TikTok / YouTube), SEO, MEO, Google Ads.',
     'news.cta': 'Visitar site →',
     'books.title': 'Publicações',
     'book.jp.badge': 'Edição Japonesa',
